@@ -16,18 +16,12 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
-      },
-      "ios": {
-        "workflow": "managed"
       }
     },
     "production": {
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
-      },
-      "ios": {
-        "workflow": "managed"
       }
     }
   }
