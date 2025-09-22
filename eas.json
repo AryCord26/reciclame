@@ -17,13 +17,18 @@
       "android": {
         "buildType": "apk"
       },
-      "ios": {}
+      "ios": {
+        "workflow": "managed"
+      }
     },
     "production": {
+      "distribution": "store",
       "android": {
         "buildType": "app-bundle"
       },
-      "ios": {}
+      "ios": {
+        "workflow": "managed"
+      }
     }
   }
 }
