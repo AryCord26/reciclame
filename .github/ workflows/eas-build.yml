@@ -28,7 +28,32 @@ jobs:
         run: npm install
 
       - name: Build Android (Production)
-        run: eas build --platform android --profile production --non-interactive
+        id: android_build
+        run: |
+          BUILD_OUTPUT=$(eas build --platform android --profile production --non-interactive --json)
+          echo "$BUILD_OUTPUT" > android_build.json
+          echo "::set-output name=android_url::$(jq -r '.buildUrl' android_build.json)"
+
+      - name: Upload Android Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-build
+          path: android_build.json
 
       - name: Build iOS (Production)
-        run: eas build --platform ios --profile production --non-interactive
+        id: ios_build
+        run: |
+          BUILD_OUTPUT=$(eas build --platform ios --profile production --non-interactive --json)
+          echo "$BUILD_OUTPUT" > ios_build.json
+          echo "::set-output name=ios_url::$(jq -r '.buildUrl' ios_build.json)"
+
+      - name: Upload iOS Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-build
+          path: ios_build.json
+
+      - name: Show build URLs
+        run: |
+          echo "Android build URL: ${{ steps.android_build.outputs.android_url }}"
+          echo "iOS build URL: ${{ steps.ios_build.outputs.ios_url }}"
