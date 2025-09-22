@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ReciclaMe",
+    "name": "Reciclame",
     "slug": "reciclame",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,10 +11,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": ["**/*"],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "platforms": ["ios", "android", "web"],
     "ios": {
       "supportsTablet": true
     },
